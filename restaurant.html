@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Restaurant Management System</title>
+  <style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    html {
+  scroll-behavior: smooth;
+}
+
+
+    header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  padding: 15px 20px;
+  z-index: 9999;
+}
+
+
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+}
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+   .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+    .nav-links li a:hover {
+      color: #aaa;
+    }
+
+  .menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+
+    .buttons a {
+      margin-left: 1rem;
+    }
+
+    .bt1 {
+      background-color: #ff9900;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .bt1:hover {
+      background-color: #e67e00;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      margin-top: 90px;
+    }
+
+    .maintext {
+      text-align: center;
+      margin-top: -330px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .maintext h1 {
+      font-size: 2rem;
+    }
+
+    .maintext p {
+      font-size: 1rem;
+    }
+
+    .maintext h2 {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+
+    .fade{
+      display: flex;
+      flex-direction: column;
+    }
+    .maintext a.place {
+      text-decoration: none;
+      font-size: 4rem;
+      color: orange;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: bolder;
+      animation: slideInFromLeft 2s ease forwards;
+      opacity: 0;
+    }
+
+
+
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .fade-in {
+      color: aliceblue;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .delay1 { animation-delay: 0.5s; }
+    .delay2 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      margin-top: 4rem;
+    }
+#aboutus {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  padding: 1.5rem;
+  background-color: #fff8f0;
+  border-left: 5px solid #ff6347; /* Tomato color */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: #333;
+}
+
+    .services-container {
+      background-color: #edc07b;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .services-container h1 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .services-container ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+   .services-container ul li {
+  background-color: #f1f1f1;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #333;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+    .services-container ul li img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* Hover effect */
+.services-container ul li:hover,
+.services-container ul li.active {
+  background-color: #ffe0b3;
+  transform: scale(1.02);
+}
+    .services-container ul li strong {
+      color: #ff6600;
+    }
+
+    .verified-section {
+  background-color: #f8f8f8;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.verified-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .benefit-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 calc(50% - 20px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #27ae60;
+    }
+    
+.card {
+  flex: 1 1 30%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: #ff6600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .member {
+      text-align: center;
+    }
+
+    .member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+    }
+.working-hours {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.working-hours label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.working-hours ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.working-hours li {
+  font-size: 16px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background-color: #f2f2f2;
+  border-left: 4px solid #25D366; /* WhatsApp green */
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.working-hours li:hover {
+  background-color: #e0f7ec;
+}
+
+    .map-container {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+.map-container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.map-container iframe {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+}
+    
+        .site-footer {
+       background-color: #111;
+  color: #fff;
+      padding: 50px 20px 30px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1 1 220px;
+    }
+
+    .footer-column h3,
+    .footer-column h4 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-column ul li a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #fff;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover img {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+   .whatsapp-float {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #25D366;
+          color: #fff;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          animation: pulse 2s infinite;
+        }
+      
+        @keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 1);
+  }
+}
+    
+        .whatsapp-float img {
+          width: 35px;
+          height: 35px;
+        }
+        #whatsappPopup {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2000;
+          display: none;
+        }
+        #popupOverlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.5);
+          width: 100%;
+          height: 100%;
+        }
+        #popupBox {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 90%;
+          max-width: 400px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        #popupBox h3 {
+          margin-bottom: 15px;
+        }
+        #popupBox ul {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 15px;
+        }
+        #popupBox ul li {
+          padding: 10px;
+          background: #f4f4f4;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+        #popupBox ul li:hover {
+          background: #ddd;
+        }
+        #popupBox button {
+          padding: 10px 20px;
+          background: #111;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+          #whatsappPopup #popupBox {
+    background-color: white;
+    border-radius: 8px;
+    width: 300px;
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  #whatsappPopup #popupBox h3 {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    margin: 0;
+    padding: 12px 16px;
+    border-radius: 8px 8px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  #whatsappPopup #popupBox ul {
+    list-style: none;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  #whatsappPopup #popupBox ul li {
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  #whatsappPopup #popupBox ul li:hover {
+    background-color: #e5f3e7; /* subtle light green hover */
+  }
+
+  #whatsappPopup #popupBox button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #ccc;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  #whatsappPopup #popupBox button:hover {
+    background-color: #bbb;
+  }
+    
+
+    @media (max-width: 768px) {
+      .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    border-radius: 0 0 0 10px;
+  }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .maintext {
+        margin-top: -200px;
+        padding: 0 1rem;
+      }
+
+      .maintext h1 {
+        font-size: 1.4rem;
+      }
+
+      .maintext p {
+        font-size: 1rem;
+      }
+
+      .maintext a.place{
+        font-size: 2.4rem;
+      }
+      .maintext a.staff-link{
+        font-size: 1.5rem;
+      }
+
+      .maintext h2 {
+        font-size: 1.5rem;
+      }
+       #aboutus {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+        .services-container ul li img {
+    max-width: 100%;
+  }
+
+          .benefits {
+        flex-direction: column;
+      }
+
+      .benefit-card {
+        flex: 1 1 100%;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .bt1 {
+        margin-top: 0.5rem;
+      }
+      
+      .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .verified-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+      .team {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        padding: 0 2rem;
+      }
+      
+   .working-hours {
+    padding: 15px;
+  }
+
+  .working-hours label {
+    font-size: 18px;
+  }
+
+  .working-hours li {
+    font-size: 15px;
+    padding: 6px 10px;
+  }
+        .map-container iframe {
+    height: 250px;
+  }
+            .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-column {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .maintext h1 {
+        font-size: 1rem;
+      }
+
+      .maintext p {
+        font-size: 0.9rem;
+      }
+
+      .maintext h2 {
+        font-size: 1rem;
+      }
+      
+
+      .bt1 {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      ul li {
+        font-size: 1rem;
+      }
+
+      .contact-info p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="home">  
+   <header>
+      <nav class="navbar">
+        <div class="logo">VERIFIED FOODS</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="/order.html">Order</a></li>
+          <li><a href="#working">Working Hours</a></li>
+            <li> <a href="#whychooseus">Why Choose Us</a> </li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
+      </nav>
+    </header>
+  </section>
+
+
+  <video autoplay loop muted playsinline>
+    <source src="static/image/video6.mp4" type="video/mp4" />
+  </video>
+
+  <main>
+    <div class="maintext">
+      <h1 class="fade-in">Welcome to Verified foods</h1>
+      <p class="fade-in delay2">Enjoy your meal, Stay healthy</p>
+      <div class="fade">
+        <a href="/order.html" class="place">PLACE ORDER</a>
+      </div>
+    </div>
+
+   <div class="services-container" id="services">
+  <h1>Our Services</h1>
+  <ul>
+    <li>
+      <img src="static/image/Scooter%20delivery%20service,%20Courier%20Delivery%20man%20-%20Graphics%20by%20Canva.jpeg" alt="Delivery Service">
+      <strong>Delivery:</strong> Fast and reliable meal delivery to your location.
+    </li>
+    <li>
+      <img src="/static/image/catering.jpeg" alt="Catering Service">
+      <strong>Catering:</strong> Quality catering services for events and occasions.
+    </li>
+    <li>
+      <img src="/static/image/wedding%20food%20station.jpeg" alt="Dine-In Service">
+      <strong>Dine-In:</strong> Enjoy meals in our clean and ambient restaurant.
+    </li>
+  </ul>
+</div>
+
+
+      <h1>About Our Restaurant</h1>
+      <p class="description" id="aboutus">
+        Welcome to our cozy corner of delicious flavors! We’re a passionate team dedicated to delivering quality food and excellent service. Our mission is to serve meals that warm your heart and satisfy your cravings, using only the freshest ingredients.
+      </p>
+
+      <section class="verified-section" id="whychooseus">
+    <div class="container">
+      <h2>Why Choose Verified Foods?</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Health Protection</h3>
+          <p>Minimizes health risks associated with foodborne illnesses.</p>
+        </div>
+        <div class="card">
+          <h3>Authenticity</h3>
+          <p>Ensures products are genuine and not counterfeit.</p>
+        </div>
+        <div class="card">
+          <h3>Accountability</h3>
+          <p>Promotes responsible food production and handling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    
+     <div class="container" id="benefits">
+    <h1>Benefits</h1>
+    <div class="benefits">
+      <div class="benefit-card">
+        <div class="benefit-title">1. Guaranteed Quality</div>
+        <div>Verified foods meet strict standards.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">2. Safety Assurance</div>
+        <div>Reduced risk of contamination or adulteration.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">3. Transparency</div>
+        <div>Clear information about ingredients and production.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">4. Trust</div>
+        <div>Builds confidence in the food you consume.</div>
+      </div>
+    </div>
+  </div>
+    
+    
+
+ <div class="working-hours" id="working">
+      <label>Working Hours:</label>
+      <ul>
+        <li>Monday: 8am - 10pm</li>
+        <li>Tuesday: 8am - 10pm</li>
+        <li>Wednesday: 8am - 10pm</li>
+        <li>Thursday: 8am - 10pm</li>
+        <li>Friday: 8am - 10pm</li>
+        <li>Saturday: 7am - 10pm</li>
+        <li>Sunday: ------------------</li>
+      </ul>
+    </div>
+    
+       <a href="javascript:void(0);" class="whatsapp-float" onclick="openPopup()">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp Icon" />
+    </a>
+
+    <div id="whatsappPopup">
+      <div id="popupOverlay" onclick="closePopup()"></div>
+      <div id="popupBox">
+        <h3>Chart with us on WhatsApp </h3>
+        <ul>
+          <li onclick="sendWhatsApp('>Hello, I have question about your services.')">Hello, I have question about your services.</li>
+          <li onclick="sendWhatsApp('How does the delivery process works? ')">How does the delivery process works?</li>
+          <li onclick="sendWhatsApp('I need support with my order?')">I need support with my order?</li>
+        </ul>
+        <button onclick="closePopup()">Cancel</button>
+      </div>
+    </div>
+    
+          <div class="map-container" id="location">
+  <h2>Find Us at Klagon</h2>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.9366921543704!2d-0.080724!3d5.677837000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf857d8a77159b%3A0x6e5dbf21027dc66b!2sKlagon!5e0!3m2!1sen!2sgh!4v1717411400000!5m2!1sen!2sgh" 
+    width="100%" 
+    height="350" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+  </main>
+    
+     <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>VERIFIED FOODS</h3>
+      <p>
+Expertly selected based on quality, safety, and customer satisfaction. </p>
+    <div class="social-icons">
+  <a href="https://www.facebook.com/share/16p5R3c8Ui/?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/verified_bakes_and_food_?igsh=NXNtb3ZhMDJ6Z21y&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@verifiedbakesandfood?_t=ZM-8wvKkRzW6nV&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+    </div>
+
+  <div class="footer-column">
+  <h4>Services</h4>
+  <ul>
+    <li><a href="https://wa.me/233559048013?" target="_blank">Ordering services</a></li>
+    <li><a href="https://wa.me/233559048013?" target="_blank">Booking services</a></li>
+    <li><a href="https://wa.me/233559048013?" target="_blank">Catering</a></li>
+    <li><a href="https://wa.me/233559048013?" target="_blank">Takeout</a></li>
+    <li><a href="https://wa.me/233559048013?" target="_blank">Dine-in</a></li>
+  </ul>
+</div>
+
+
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#aboutus">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column" id="contact">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="">call: 233559048013</a></li>
+        <li><a href="">Location: @klagon</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Barberhead, made by <a href="#">Mr.Kobby</a></p>
+  </div>
+</footer>
+
+
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Enable "hover" effect on tap for services list items
+    document.querySelectorAll('.services-container ul li').forEach(item => {
+      item.addEventListener('click', () => {
+        // Remove active class from all items
+        document.querySelectorAll('.services-container ul li').forEach(el => el.classList.remove('active'));
+        // Add to the clicked one
+        item.classList.add('active');
+      });
+    });
+  });
+
+       function openPopup() {
+        document.getElementById("whatsappPopup").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("whatsappPopup").style.display = "none";
+      }
+
+      function sendWhatsApp(message) {
+        const phone = "+233559048013";
+        const url = `https://wa.me/${233559048013}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+        closePopup();
+      }
+    
+  function submitForm(event) {
+    event.preventDefault(); // Stop default form behavior
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const location = document.getElementById('location').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    const text = `Contact Form Submission:\nName: ${name}\nEmail: ${email}\nLocation: ${location}\nPhone: ${phone}\nMessage: ${message}`;
+    const encodedText = encodeURIComponent(text);
+
+    const phoneNumber = "233559048013";
+    const whatsappURL = `https://wa.me/${233559048013}?text=${encodedText}`;
+
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
+
+    // Refresh when user returns to tab
+    window.addEventListener('focus', function onFocus() {
+      location.reload();
+      window.removeEventListener('focus', onFocus);
+    });
+
+    return false; // Prevent actual form submission
+  }
+
+  // Attach submitForm to your form
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm'); // Make sure your form has this ID
+    form.addEventListener('submit', submitForm);
+  });
+    </script>
+</body>
+</html>
+
+
+
+
